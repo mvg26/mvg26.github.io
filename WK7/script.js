@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hint: Use the same loading pattern from Tutorial 6
         
         // YOUR CODE HERE:
+         statusMessage.innerHTML = "loading";
+        loadButton.disabled = true;
+
+        console.log ("loading");
         
         
         try {
@@ -45,6 +49,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Hint: restaurants = restaurantData.features; (GeoJSON has a 'features' array)
             
             // YOUR CODE HERE:
+            const response = await fetch('restaurants.geojson');
+
+            const restaurantData = await response.json();
+            restaurants = restaurantData.features;
             
             
             // Step 4: Show success and enable interface
