@@ -60,12 +60,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // Hint: Call showDataSummary() and showInitialView()
             
             // YOUR CODE HERE:
+             statusMessage.innerHTML = "success";
             
-            
+
         } catch (error) {
             // Step 5: Handle loading errors
             // YOUR CODE HERE:
-            
+             statusMessage.innerHTML = "Hang tight will we fix our mistake.";
+            console.error (error);
             
         }
     });
