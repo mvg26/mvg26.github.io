@@ -34,6 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hint: Disable the load button while loading
         
         // YOUR CODE HERE:
+        statusMessage.innerHTML = "loading";
+        loadButton.disabled = true;
+
+        console.log ("loading");
         
         
         try {
@@ -48,7 +52,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // Hint: restaurants = data;
             
             // YOUR CODE HERE:
-            
+            const response = await fetch('restaurants.json');
+            if (response.ok) {
+                const data = await response.json();
+                restaurants = data;
+                statusMessage.innerHTML = "success";
+                loadButton.disabled = true;
+                displayButton.disabled = false;
+                filterButton.disabled = false;
+                mapButton.disabled = false;
+
+            }
             
             // Step 5: Show success state and enable buttons
             // Hint: Update statusDisplay classes and message
@@ -63,7 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Hint: Log the actual error for debugging
             
             // YOUR CODE HERE:
-            
+            statusMessage.innerHTML = "sowee";
+            console.error (error);
             
         }
     });
@@ -86,7 +101,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hint: restaurants.forEach(function(restaurant) { })
         
         // YOUR CODE HERE:
-        
+        restaurantList.innerHTML = "";
+        restaurants.forEach((restaurant) => 
+        {
+            let restaurantDiv = "<div>"+ restaurant.name +"</div>";
+            restaurantList.innerHTML += restaurantDiv;
+            
+        });
         
     });
     
@@ -103,7 +124,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hint: const cheapRestaurants = restaurants.filter(function(restaurant) { })
         
         // YOUR CODE HERE:
+        const cheapRestaurants = restaurants.filter((restaurant) =>
+
+        {
+            return restaurant.priceRange == "$"  || restaurant.priceRange == "$$"
+        }
         
+        );
+        
+        filteredList.innerHTML = "";
+        cheapRestaurants.forEach((restaurant) => 
+        {
+            let restaurantDiv = "<div>"+ restaurant.name +"</div>";
+            filteredList.innerHTML += restaurantDiv;
+            
+        });
         
     });
     
@@ -120,7 +155,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hint: const names = restaurants.map(function(restaurant) { })
         
         // YOUR CODE HERE:
-        
+         const names = restaurants.map((restaurant)=>
+        {
+            return restaurant.name;
+        }
+        );
+
+        mappedList.innerHTML = "<ul></ul>";
+
+        names.forEach((restaurant)=>
+        {
+            let restaurantDiv = "<div>"+ restaurant +"</div>";
+            mappedList.innerHTML += restaurantDiv;
+            
+        });
         
     });
     
@@ -150,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Hint: Create error message div with helpful text
             
             // YOUR CODE HERE:
-            
+            errorDisplay.innerHTML = "<div>Sorry about that, we'll work on this error.</div>"
             
             console.error('Demonstrated error:', error);
         }
