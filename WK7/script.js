@@ -128,8 +128,9 @@ document.addEventListener('DOMContentLoaded', function() {
         restaurants.forEach((restaurant) =>
             {
             const name = restaurant.properties.name || 'No name';
-            const address = restaurant.properties.address || 'No address';
+            const address_line_1 = restaurant.properties.address_line_1 || 'No address';
             const city = restaurant.properties.city || ''
+            const state = restaurant.properties.state || ''
             const inspection_results = restaurant.properties.inspection_results || 'Unknown'
 
             const card = document.createElement('div');
@@ -137,8 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             card.innerHTML = `
                 <h3>${name}</h3>
-                <p><strong>Address:</strong> ${address}, ${city}</p>
-                <p><strong>Status:</strong> ${status}</p>
+                <p><strong>Address:</strong> ${address_line_1}, ${city}, ${state}</p>
+                <p><strong>Status:</strong> ${inspection_results}</p>
              `;
 
     cardGrid.appendChild(card);
