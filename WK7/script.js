@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hint: Use the same loading pattern from Tutorial 6
         
         // YOUR CODE HERE:
-         statusMessage.innerHTML = "loading";
+        statusDisplay.innerHTML = "Loading";
         loadButton.disabled = true;
 
-        console.log ("loading");
+        console.log ("Loading");
         
         
         try {
@@ -60,14 +60,20 @@ document.addEventListener('DOMContentLoaded', function() {
             // Hint: Call showDataSummary() and showInitialView()
             
             // YOUR CODE HERE:
-             statusMessage.innerHTML = "success";
-            
+             statusDisplay.innerHTML = "Success";
+
+            showDataSummary();
+            showInitialView();
+
+
 
         } catch (error) {
             // Step 5: Handle loading errors
             // YOUR CODE HERE:
-             statusMessage.innerHTML = "Hang tight will we fix our mistake.";
-            console.error (error);
+            statusDisplay.innerHTML = "Hang tight while we fix our mistake.";
+            console.error ("Error: Failed to Load");
+        } finally {
+            loadButton.disabled = false;
             
         }
     });
@@ -82,7 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hint: Call switchToView('card') and updateViewButtons
         
         // YOUR CODE HERE:
-        
+        switchToView('card');
+        updateViewButtons(cardViewBtn);
         
     });
     
@@ -90,7 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
     tableViewBtn.addEventListener('click', function() {
         // Step 7: Switch to table view
         // YOUR CODE HERE:
-        
+        switchToView('table');
+        updateViewButtons(tableViewBtn);
         
     });
     
@@ -98,7 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
     statsViewBtn.addEventListener('click', function() {
         // Step 8: Switch to stats view
         // YOUR CODE HERE:
-        
+        switchToView('stats');
+        updateViewButtons(statsViewBtn);
         
     });
     
@@ -116,6 +125,25 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hint: Focus on: name, location, recent inspection status
         
         // YOUR CODE HERE:
+        restaurants.forEach((restaurant) =>
+            {
+            const name = restaurant.properties.name || 'No name';
+            const address = restaurant.properties.address || 'No address';
+            const city = restaurant.properties.city || ''
+            const inspection_results = restaurant.properties.inspection_results || 'Unknown'
+
+            const card = document.createElement('div');
+            card.className = 'restaurant-card';
+
+            card.innerHTML = `
+                <h3>${name}</h3>
+                <p><strong>Address:</strong> ${address}, ${city}</p>
+                <p><strong>Status:</strong> ${status}</p>
+             `;
+
+    cardGrid.appendChild(card);
+
+            });
         
         
         console.log('Card view: Emphasizing restaurant discovery');
