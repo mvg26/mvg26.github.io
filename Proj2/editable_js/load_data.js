@@ -6,11 +6,11 @@
  */
 async function loadData() {
   try {
-    // TODO: Replace with student's chosen API
-    // Examples:
-    // const response = await fetch('https://data.princegeorgescountymd.gov/resource/xxxx.json');
-    // const response = await fetch('https://api.nasa.gov/neo/rest/v1/feed?api_key=DEMO_KEY');
-    // const data = await response.json();
+    async function loadData() {
+    const response = await fetch('YOUR-API-ENDPOINT');
+    const data = await response.json();
+    return data;
+}
 
     const response = await fetch ("./data.json")
     const data = await response.json();
