@@ -136,7 +136,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const card = document.createElement('div');
             card.className = 'restaurant-card';
 
-            card.innerHTML = `
+            //So I don't use so many +
+            card.innerHTML = `  
                 <h3>${name}</h3>
                 <p><strong>Address:</strong> ${address_line_1}, ${city}, ${state}</p>
                 <p><strong>Status:</strong> ${inspection_results}</p>

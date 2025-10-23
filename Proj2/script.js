@@ -47,6 +47,7 @@ function showError(message) {
             `);
 }
 
+
 // ============================================
 // APPLICATION INITIALIZATION - PROVIDED
 // ============================================

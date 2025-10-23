@@ -12,7 +12,7 @@ async function loadData() {
     // const response = await fetch('https://api.nasa.gov/neo/rest/v1/feed?api_key=DEMO_KEY');
     // const data = await response.json();
 
-    const response = await fetch ("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=20")
+    const response = await fetch ("./data.json")
     const data = await response.json();
     console.log("data loaded", data);
 
