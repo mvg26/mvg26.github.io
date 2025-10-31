@@ -27,4 +27,5 @@ async function loadData() {
   }
 }
 
+
 export default loadData
